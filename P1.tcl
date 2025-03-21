@@ -21,6 +21,8 @@ $ns attach-agent $tcp
 set sink[new Agent/TCPSink]
 $ns attach-agent $sink
 
+$ns connect $tcp $sink
+
 set cbr [new Applicaation/Traffic/CBR]
 $ns attach-agent $cbr
 
@@ -34,6 +36,7 @@ proc finish{} {
   exec trace out.tr &
   exit 0
 }
-$ns at 0.1 "colour blue"
-$ns at 0.5 "stop"
+$ns at 0.1 "$cbr start"
+$ns at 5.0 "$cbr stop"
+$ns at 5.5 "finish"
 $ns run
