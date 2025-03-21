@@ -17,9 +17,9 @@ $ns queue-limit $n0 $n1 5
 $ns queue-limit $n1 $n2 5
 
 set tcp [new Agent/TCP]
-$ns attach-agent $tcp
+$ns attach-agent $n0 $tcp
 set sink[new Agent/TCPSink]
-$ns attach-agent $sink
+$ns attach-agent $n5 $sink
 
 $ns connect $tcp $sink
 
